@@ -18,7 +18,8 @@ label_path = args.label_folder
 for i, image_path in tqdm(enumerate(bdi_images)):
     image = cv2.imread(image_path)
     height, width = image.shape[:2]
-    with open(label_path + os.path.basename(image_path)[:-5] + ".txt", 'r') as file:
+    name = os.path.basename(image_path).split(".")[0]
+    with open(label_path + name + ".txt", 'r') as file:
         lines = file.readlines()
         for line in lines:
             line = line.strip().split(" ")
